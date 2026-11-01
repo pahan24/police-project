@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sri Lanka Police — Official Website</title>
+<style>
+:root {
+  --blue-900: #052a4b;
+  --blue-700: #0b63a5;
+  --blue-500: #1e88e5;
+  --accent: #ffd84d;
+  --container: 1200px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #f3f6fb;
+  color: #112;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* Header */
+.site-header {
+  background: linear-gradient(90deg, var(--blue-900), var(--blue-700));
+  color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  flex-wrap: wrap;
+}
+
+.brand {
+  font-weight: 700;
+  text-decoration: none;
+  color: #fff;
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.brand-icon {
+  width: 45px;
+  height: 45px;
+  background: var(--accent);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: var(--blue-900);
+}
+
+.main-nav ul {
+  list-style: none;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.main-nav a {
+  color: #fff;
+  padding: 0.6rem 1rem;
+  text-decoration: none;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.main-nav a:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+.mobile-toggle {
+  display: none;
+  font-size: 1.8rem;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+/* Dropdown */
+.has-dropdown {
+  position: relative;
+}
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  background: #fff;
+  color: #222;
+  border-radius: 10px;
+  box-shadow: 0 12px 40px rgba(2, 6, 23, 0.2);
+  overflow: hidden;
+  display: none;
+  min-width: 220px;
+  z-index: 100;
+}
+
+.dropdown a {
+  display: block;
+  padding: 0.75rem 1.25rem;
+  color: #222;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  border-left: 3px solid transparent;
+}
+
+.dropdown a:hover {
+  background: #f3f7ff;
+  border-left-color: var(--blue-700);
+  padding-left: 1.5rem;
+}
+
+/* News Ticker */
+.news-ticker {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  padding: 0.7rem;
+  background: linear-gradient(90deg, #fff3d9, #fffaec);
+  border-bottom: 2px solid var(--accent);
+}
+
+.ticker-label {
+  background: var(--blue-900);
+  color: #fff;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+.ticker-track {
+  overflow: hidden;
+  white-space: nowrap;
+  flex: 1;
+  font-weight: 600;
+  color: #333;
+}
+
+.ticker-animate {
+  display: inline-block;
+  padding-left: 100%;
+  animation: scroll 25s linear infinite;
+}
+
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+
+/* Hero Slider */
+.hero-slider {
+  position: relative;
+  height: 550px;
+  overflow: hidden;
+  margin-bottom: 2rem;
+  border-radius: 0 0 20px 20px;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.slide::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+}
+
+.slide.active {
+  opacity: 1;
+}
+
+.hero-caption {
+  position: absolute;
+  left: 3rem;
+  bottom: 5rem;
+  color: #fff;
+  max-width: 800px;
+  z-index: 10;
+}
+
+.hero-caption h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  text-shadow: 0 8px 30px rgba(2, 6, 23, 0.8);
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.hero-caption p {
+  font-size: 1.15rem;
+  text-shadow: 0 4px 12px rgba(2, 6, 23, 0.8);
+  line-height: 1.6;
+}
+
+.hero-controls {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.6rem;
+  z-index: 10;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dot:hover {
+  background: rgba(255, 255, 255, 0.7);
+  transform: scale(1.2);
+}
+
+.dot.active {
+  background: #fff;
+  width: 32px;
+  border-radius: 6px;
+}
+
+/* Quick Links */
+.quick-links {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-top: -60px;
+  position: relative;
+  z-index: 100;
+}
+
+.q {
+  background: #fff;
+  padding: 1.75rem 1.25rem;
+  border-radius: 14px;
+  box-shadow: 0 10px 40px rgba(2, 6, 23, 0.1);
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-top: 4px solid var(--blue-700);
+}
+
+.q:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 50px rgba(2, 6, 23, 0.15);
+  border-top-color: var(--accent);
+}
+
+.q-icon {
+  font-size: 2.5rem;
+  margin-bottom: 0.75rem;
+  color: var(--blue-700);
+}
+
+.q h3 {
+  margin-bottom: 0.5rem;
+  color: var(--blue-900);
+  font-size: 1.1rem;
+}
+
+.muted {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+/* Chief Section */
+.chief {
+  padding: 4rem 1rem;
+}
+
+.chief-inner {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 3rem;
+  align-items: center;
+  background: linear-gradient(135deg, var(--blue-900), var(--blue-700));
+  color: #fff;
+  padding: 3rem;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 15px 50px rgba(2, 6, 23, 0.2);
+}
+
+.chief-content h2 {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  color: var(--accent);
+}
+
+.chief-name {
+  font-weight: 700;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.chief-title {
+  font-size: 1rem;
+  opacity: 0.9;
+  margin-bottom: 1.5rem;
+}
+
+.chief-bio {
+  line-height: 1.8;
+  opacity: 0.95;
+}
+
+.chief-image {
+  text-align: center;
+}
+
+.chief-image img {
+  width: 100%;
+  max-width: 350px;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Sections */
+section {
+  padding: 3rem 0;
+}
+
+section h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: var(--blue-900);
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+section h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 80px;
+  height: 4px;
+  background: var(--accent);
+  border-radius: 2px;
+}
+
+/* Grid */
+.grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.grid-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.grid-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.grid-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+/* Cards */
+.card {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(2, 6, 23, 0.08);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 50px rgba(2, 6, 23, 0.15);
+}
+
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.card:hover img {
+  transform: scale(1.05);
+}
+
+.card-body {
+  padding: 1.25rem;
+}
+
+.card-body h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.1rem;
+  color: var(--blue-900);
+}
+
+.card-body p {
+  color: #666;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+/* Services Section */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.service-card {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(2, 6, 23, 0.08);
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 50px rgba(2, 6, 23, 0.15);
+}
+
+.service-icon {
+  font-size: 3rem;
+  color: var(--blue-700);
+  margin-bottom: 1rem;
+}
+
+.service-card h3 {
+  color: var(--blue-900);
+  margin-bottom: 1rem;
+}
+
+/* Gallery */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.gallery-grid a {
+  display: block;
+  text-decoration: none;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+.gallery-grid img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.gallery-grid a:hover img {
+  transform: scale(1.1);
+}
+
+/* Contact Section */
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.contact-box {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(2, 6, 23, 0.08);
+  text-align: center;
+}
+
+.contact-icon {
+  font-size: 2.5rem;
+  color: var(--blue-700);
+  margin-bottom: 1rem;
+}
+
+.contact-box h3 {
+  color: var(--blue-900);
+  margin-bottom: 0.5rem;
+}
+
+.emergency-box {
+  background: linear-gradient(135deg, #dc2626, #991b1b);
+  color: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.emergency-box h3 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.emergency-number {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+}
+
+/* Footer */
+.site-footer {
+  background: var(--blue-900);
+  color: #fff;
+  padding: 3rem 1rem 1.5rem;
+  margin-top: 3rem;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.footer-grid h4 {
+  margin: 0 0 1rem 0;
+  color: var(--accent);
+  font-size: 1.1rem;
+}
+
+.footer-grid a {
+  color: #fff;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 0.5rem;
+  opacity: 0.9;
+  transition: all 0.2s ease;
+}
+
+.footer-grid a:hover {
+  opacity: 1;
+  color: var(--accent);
+  padding-left: 0.5rem;
+}
+
+.footer-grid p {
+  margin: 0.5rem 0;
+  opacity: 0.9;
+  line-height: 1.8;
+}
+
+.footer-emblem {
+  text-align: center;
+}
+
+.footer-emblem img {
+  width: 100px;
+  height: auto;
+  opacity: 0.9;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 1.5rem;
+  text-align: center;
+  opacity: 0.8;
+}
+
+/* Responsive */
+@media (max-width: 1000px) {
+  .grid-4, .services-grid, .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .hero-caption h1 {
+    font-size: 2.2rem;
+  }
+  
+  .chief-inner {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 800px) {
+  .hero-slider {
+    height: 450px;
+  }
+  
+  .main-nav {
+    display: none;
+    width: 100%;
+    order: 3;
+  }
+  
+  .main-nav.active {
+    display: block;
+  }
+  
+  .main-nav ul {
+    flex-direction: column;
+    width: 100%;
+    padding: 1rem 0;
+  }
+  
+  .main-nav a {
+    width: 100%;
+  }
+  
+  .mobile-toggle {
+    display: block;
+  }
+  
+  .quick-links {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .footer-grid, .contact-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .quick-links, .grid-4, .services-grid, .gallery-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  
+  .hero-slider {
+    height: 380px;
+  }
+  
+  .hero-caption {
+    left: 1.5rem;
+    right: 1.5rem;
+    bottom: 3rem;
+  }
+  
+  .hero-caption h1 {
+    font-size: 1.75rem;
+  }
+  
+  .hero-caption p {
+    font-size: 1rem;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="#home">
+    <img src="images/logo.svg"> 
+      <span>SRI LANKA POLICE</span>
+    </a>
+    <nav class="main-nav" id="mainNav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li class="has-dropdown" id="divDrop">
+          <a href="#divisions">Divisions ▾</a>
+          <div class="dropdown" id="divDropdown">
+            <a href="#investigation">Investigation Bureau</a>
+            <a href="#traffic">Traffic Division</a>
+            <a href="#community">Community Relations</a>
+            <a href="#special">Special Operations</a>
+            <a href="#cybercrime">Cybercrime Unit</a>
+          </div>
+        </li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#downloads">Downloads</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <button class="mobile-toggle" id="mobileToggle">☰</button>
+  </div>
+</header>
+
+<!-- SERVICES -->
+<section class="container" id="services">
+  <h2 style="margin:2rem 0;">Inappropriate Visuals</h2>
+
+  <div class="services-grid">
+
+    <div class="service-card"></div>
+
+    <!-- ✅ SEARCH CARD -->
+    <div class="service-card">
+      <div class="service-icon">🔍</div>
+      <h3>Inappropriate Visuals Investigation</h3>
+      <p>Enter phone number to view report status</p>
+
+      <input 
+        type="text" 
+        id="phoneInput"
+        placeholder="Enter phone number"
+        style="width:100%;padding:12px;border-radius:8px;
+               border:1px solid #ccc;margin-top:15px;">
+
+      <button 
+        onclick="checkNumber()"
+        style="width:100%;margin-top:12px;
+               padding:12px;border:none;
+               border-radius:8px;
+               background:#0b63a5;
+               color:#fff;font-weight:600;
+               cursor:pointer;">
+        Search
+      </button>
+
+      <div id="result" style="margin-top:15px;"></div>
+    </div>
+
+    <div class="service-card"></div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4>Quick Links</h4>
+        <a href="#home">Home</a>
+        <a href="#about">About Us</a>
+        <a href="#services">Services</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div>
+        <h4>Related Links</h4>
+        <a href="#">Government Portal</a>
+        <a href="#">Ministry of Justice</a>
+        <a href="#">Department of Prisons</a>
+        <a href="#">Attorney General's Department</a>
+      </div>
+      <div>
+        <h4>Resources</h4>
+        <a href="#">Online Services</a>
+        <a href="#">Download Forms</a>
+        <a href="#">Crime Prevention Tips</a>
+        <a href="#">Career Opportunities</a>
+      </div>
+      <div class="footer-emblem">
+        <h4>Sri Lanka</h4>
+        <img src="images/emblem.svg">
+     </div>
+
+</footer>
+
+<!-- ✅ JAVASCRIPT -->
+<script>
+function checkNumber() {
+  var phone = document.getElementById("phoneInput").value;
+  var result = document.getElementById("result");
+
+  if (phone === "0741319311") {
+    result.innerHTML = `
+      <p><b>Name:</b> Kamesh Prabuddha</p>
+      <p><b>Case:</b> Under Investigation</p>
+      <p><b>Status:</b> Pending</p>
+    `;
+  }
+  else if (phone === "0704612313") {
+    result.innerHTML = `
+      <p><b>Name:</b> Ushan Sadew</p>
+      <p><b>Case:</b> 18+ visuals report</p>
+      <p><b>Status:</b> Police Took The Suspect In To Custody.</p>
+    `;
+  }
+  else if (phone === "0776049023") {
+    result.innerHTML = `
+      <p><b>Name:</b> Charith Viduranga</p>
+      <p><b>Case:</b> 18+ visuals report</p>
+      <p><b>Status:</b> Police Took The Suspect In To Custody.</p>
+    `;
+ }
+ else if (phone === "0754430336") {
+    result.innerHTML = `
+      <p><b>Name:</b> Imash Lakshan</p>
+      <p><b>Case:</b> 18+ visuals report</p>
+      <p><b>Status:</b> You have to observe for 7 days and take action.</p>
+    `;
+ }
+  else if (phone === "0787783773") {
+    result.innerHTML = `
+      <p><b>Name:</b> S Lakshan</p>
+      <p><b>Case:</b> Inappropriate report</p>
+      <p><b>Status:</b> You have to observe for 7 days and take action.</p>
+    `;
+  }
+  else if (phone === "0770521242") {
+    result.innerHTML = `
+      <p><b>Name:</b> Ganidu Kavishka</p>
+      <p><b>Case:</b> Inappropriate report</p>
+      <p><b>Status:</b> Pending.</p>
+    `;
+  }
+  else if (phone === "0723961531") {
+    result.innerHTML = `
+      <p><b>Name:</b> Nethsara Sweshan</p>
+      <p><b>Case:</b> Under Investigation</p>
+      <p><b>Status:</b> Pending.</p>
+    `;
+  }
+  else if (phone === "0742134456") {
+    result.innerHTML = `
+      <p><b>Name:</b> Amantha Lakshan</p>
+      <p><b>Case:</b> Inappropriate report</p>
+      <p><b>Status:</b> You have to observe for 7 days and take action.</p>
+    `;
+  }
+  else if (phone === "0726491790") {
+    result.innerHTML = `
+      <p><b>Name:</b> Deneth Adithya</p>
+      <p><b>Case:</b> Inappropriate report</p>
+      <p><b>Status:</b> You have to observe for 7 days and take action.</p>
+    `;
+  }
+   else if (phone === "0773489392") {
+    result.innerHTML = `
+      <p><b>Name:</b> P Sibas</p>
+      <p><b>Case:</b> Under Investigation</p>
+      <p><b>Status:</b> You have to observe for 7 days and take action.</p>
+    `;
+  }
+  else if (phone === "0785590718") {
+    result.innerHTML = `
+      <p><b>Name:</b> Tharusha Shehan</p>
+      <p><b>Case:</b> Inappropriate Visuals report</p>
+      <p><b>Status:</b> Police Took The Suspect In To Custody.</p>
+    `;
+  }
+  else {
+    result.innerHTML =
+      "<p style='color:red;font-weight:600;'>No records found ❌</p>";
+  }
+}
+</script>
+
+</body>
+</html>
+ 
+
+
+
+
+
+
+

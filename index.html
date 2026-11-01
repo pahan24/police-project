@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<meta name="google-site-verification" content="scgBeSllopSymgxiIruv_xyGOUU9q2g6Rg32_W-10EI" />
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sri Lanka Police — Official Website</title>
@@ -261,6 +262,50 @@ body {
   background: #fff;
   width: 32px;
   border-radius: 6px;
+}
+
+/* Quick Links */
+.quick-links {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-top: -60px;
+  position: relative;
+  z-index: 100;
+}
+
+.q {
+  background: #fff;
+  padding: 1.75rem 1.25rem;
+  border-radius: 14px;
+  box-shadow: 0 10px 40px rgba(2, 6, 23, 0.1);
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-top: 4px solid var(--blue-700);
+}
+
+.q:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 50px rgba(2, 6, 23, 0.15);
+  border-top-color: var(--accent);
+}
+
+.q-icon {
+  font-size: 2.5rem;
+  margin-bottom: 0.75rem;
+  color: var(--blue-700);
+}
+
+.q h3 {
+  margin-bottom: 0.5rem;
+  color: var(--blue-900);
+  font-size: 1.1rem;
+}
+
+.muted {
+  color: #666;
+  font-size: 0.9rem;
 }
 
 /* Quick Links */
@@ -691,27 +736,26 @@ section h2::after {
 <header class="site-header">
   <div class="container header-inner">
     <a class="brand" href="#home">
-      <div class="brand-icon">🛡️</div>
+    <img src="images/logo.svg"> 
       <span>SRI LANKA POLICE</span>
     </a>
     <nav class="main-nav" id="mainNav">
       <ul>
         <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
+        <li><a href="about.html">About</a></li>
         <li class="has-dropdown" id="divDrop">
-          <a href="#divisions">Divisions ▾</a>
+          <a href="divisions.html">Divisions ▾</a>
           <div class="dropdown" id="divDropdown">
             <a href="#investigation">Investigation Bureau</a>
             <a href="#traffic">Traffic Division</a>
             <a href="#community">Community Relations</a>
             <a href="#special">Special Operations</a>
-            <a href="#cybercrime">Cybercrime Unit</a>
           </div>
         </li>
         <li><a href="#services">Services</a></li>
         <li><a href="#downloads">Downloads</a></li>
         <li><a href="#gallery">Gallery</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
     <button class="mobile-toggle" id="mobileToggle">☰</button>
@@ -730,9 +774,9 @@ section h2::after {
 
 <!-- Hero Slider -->
 <section class="hero-slider" id="home">
-  <div class="slide active" style="background-image:url('https://www.police.lk/wp-content/uploads/2024/11/05.jpg');" data-title="Protecting and Serving Our Community"></div>
-  <div class="slide" style="background-image:url('https://www.police.lk/wp-content/uploads/2024/11/new-09.jpg');" data-title="Excellence in Law Enforcement"></div>
-  <div class="slide" style="background-image:url('https://www.police.lk/wp-content/uploads/2024/11/14.jpg');" data-title="Building Trust Through Service"></div>
+  <div class="slide active" style="background-image:url('images/hero-1.svg');" data-title="Protecting and Serving Our Community"></div>
+  <div class="slide" style="background-image:url('images/hero-2.svg');" data-title="Excellence in Law Enforcement"></div>
+  <div class="slide" style="background-image:url('images/hero-3.svg');" data-title="Building Trust Through Service"></div>
   <div class="hero-caption container">
     <h1 id="heroTitle">Protecting and Serving Our Community</h1>
     <p>Committed to serving with honour, professionalism and unwavering respect for human rights. Your safety is our priority.</p>
@@ -758,9 +802,11 @@ section h2::after {
     <p class="muted">Photos & videos</p>
   </div>
   <div class="q">
+  <a class="brand" href="contact.html">
     <div class="q-icon">📞</div>
     <h3>Contact Us</h3>
-    <p class="muted">Emergency information</p>
+    
+  </a>
   </div>
 </section>
 
@@ -776,7 +822,7 @@ section h2::after {
       </p>
     </div>
     <div class="chief-image">
-      <img src="https://www.police.lk/wp-content/uploads/elementor/thumbs/IGP_Priyantha_weerasooriya-1-ragz62q7uc33na0csme3kn16mw3ziszjqz6wdfqbk0.png" alt="Inspector General of Police">
+      <img src="images/igp.svg" alt="Inspector General of Police">
     </div>
   </div>
 </section>
@@ -806,9 +852,10 @@ section h2::after {
       <p class="muted">Tackling digital crimes and protecting citizens in the online world.</p>
     </div>
     <div class="service-card">
-      <div class="service-icon">🎓</div>
-      <h3>Training Academy</h3>
-      <p class="muted">World-class training facilities for developing professional police officers.</p>
+     <a class="brand" href="Inappropriate.html">
+      <div class="service-icon">🔞</div>
+      <h3>Inappropriate visuals</h3>
+     </a>
     </div>
     <div class="service-card">
       <div class="service-icon">🆘</div>
@@ -823,28 +870,28 @@ section h2::after {
   <h2>Special Events & Operations</h2>
   <div class="grid grid-4">
     <div class="card">
-      <img src="https://www.police.lk/wp-content/uploads/2025/12/Government-alerts-e1764761480648.jpg" alt="Government Alerts">
+      <img src="images/event-1.svg" alt="Government Alerts">
       <div class="card-body">
         <h3>Government Alerts</h3>
         <p class="muted">Important public safety announcements and alerts</p>
       </div>
     </div>
     <div class="card">
-      <img src="https://www.police.lk/wp-content/uploads/2025/12/9-3.jpg" alt="China Support Relief">
+      <img src="images/event-2.svg" alt="China Support Relief">
       <div class="card-body">
         <h3>China Support Relief</h3>
         <p class="muted">International cooperation and humanitarian assistance</p>
       </div>
     </div>
     <div class="card">
-      <img src="https://www.police.lk/wp-content/uploads/2025/12/3-8-e1764760424551.jpg" alt="Colombo Central Division">
+      <img src="images/event-3.svg" alt="Colombo Central Division">
       <div class="card-body">
         <h3>Colombo Central Division</h3>
         <p class="muted">Updates from the capital's police division</p>
       </div>
     </div>
     <div class="card">
-      <img src="https://www.police.lk/wp-content/uploads/2025/12/6-1.jpg" alt="Weather Relief Operations">
+      <img src="images/event-4.svg" alt="Weather Relief Operations">
       <div class="card-body">
         <h3>Weather Relief Operations</h3>
         <p class="muted">Emergency response during natural disasters</p>
@@ -857,14 +904,14 @@ section h2::after {
 <section class="container" id="gallery">
   <h2>Photo Gallery</h2>
   <div class="gallery-grid">
-    <a href="#"><img src="https://www.police.lk/wp-content/uploads/2024/11/05.jpg" alt="Gallery 1"></a>
-    <a href="#"><img src="https://www.police.lk/wp-content/uploads/2024/11/new-09.jpg" alt="Gallery 2"></a>
-    <a href="#"><img src="https://www.police.lk/wp-content/uploads/2024/11/14.jpg" alt="Gallery 3"></a>
-    <a href="#"><img src="https://www.police.lk/wp-content/uploads/2025/12/Government-alerts-e1764761480648.jpg" alt="Gallery 4"></a>
-    <a href="#"><img src="https://www.police.lk/wp-content/uploads/2025/12/9-3.jpg" alt="Gallery 5"></a>
-    <a href="#"><img src="https://www.police.lk/wp-content/uploads/2025/12/3-8-e1764760424551.jpg" alt="Gallery 6"></a>
-    <a href="#"><img src="https://www.police.lk/wp-content/uploads/2025/12/6-1.jpg" alt="Gallery 7"></a>
-    <a href="#"><img src="https://www.police.lk/wp-content/uploads/elementor/thumbs/IGP_Priyantha_weerasooriya-1-ragz62q7uc33na0csme3kn16mw3ziszjqz6wdfqbk0.png" alt="Gallery 8"></a>
+    <a href="#"><img src="images/hero-1.svg" alt="Gallery 1"></a>
+    <a href="#"><img src="images/hero-2.svg" alt="Gallery 2"></a>
+    <a href="#"><img src="images/hero-3.svg" alt="Gallery 3"></a>
+    <a href="#"><img src="images/event-1.svg" alt="Gallery 4"></a>
+    <a href="#"><img src="images/event-2.svg" alt="Gallery 5"></a>
+    <a href="#"><img src="images/event-3.svg" alt="Gallery 6"></a>
+    <a href="#"><img src="images/event-4.svg" alt="Gallery 7"></a>
+    <a href="#"><img src="images/igp.svg" alt="Gallery 8"></a>
   </div>
 </section>
 
@@ -924,5 +971,17 @@ section h2::after {
       </div>
       <div class="footer-emblem">
         <h4>Sri Lanka</h4>
-        <img src="https://www.police.lk/wp-content/uploads/2024/10/Sri-Lankan-National-Emblem.png">
+        <img src="images/emblem.svg">
      </div>
+
+
+
+
+
+
+
+
+
+
+
+
